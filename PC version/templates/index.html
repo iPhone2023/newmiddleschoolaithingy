@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Closetly | Your daily edit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar"><a class="wordmark" href="/">closetly<span>•</span></a><div class="date-pill">{{ today }} <span>·</span> Tuesday edit</div><div class="avatar">JH</div></header>
+    <main>
+      <section class="intro"><div><p class="eyebrow">YOUR PERSONAL STYLIST</p><h1>Get dressed,<br><em>with intention.</em></h1></div><p class="intro-copy">A daily recommendation shaped by what you own, what the sky is doing, and wherever the day takes you.</p></section>
+      <section class="context-grid">
+        <div class="panel weather-panel"><div class="panel-head"><span class="eyebrow">01 / OUTSIDE</span><span class="status-dot"></span></div><div class="weather-main"><span id="weather-icon">☼</span><div><div class="temp" id="temperature">--°</div><div class="muted" id="weather-place">Loading weather...</div></div></div><div class="weather-stats"><span>FEELS <b id="feels">--°</b></span><span>WIND <b id="wind">-- mph</b></span><span>RAIN <b id="rain">--%</b></span></div><div class="city-input"><input id="city" value="New York" aria-label="City"><button id="refresh-weather" title="Refresh weather">↻</button></div></div>
+        <div class="panel plans-panel"><div class="panel-head"><span class="eyebrow">02 / TODAY'S RHYTHM</span><span class="mini-icon">✦</span></div><label for="event">What is on your calendar?</label><textarea id="event" placeholder="e.g. Studio day, dinner with friends, client meeting...">Studio day, dinner with friends</textarea><div class="plan-tags"><button class="tag active" data-event="Studio day">Studio day</button><button class="tag" data-event="Dinner with friends">Dinner with friends</button><button class="tag" data-event="Client meeting">Client meeting</button></div></div>
+      </section>
+      <section class="wardrobe-section"><div class="section-title"><div><p class="eyebrow">03 / YOUR CLOSET</p><h2>Available pieces <span id="item-count">0</span></h2></div><button class="add-button" id="open-modal">＋ Add a piece</button></div><div class="clothes-grid" id="clothes-grid"></div></section>
+      <section class="recommendation"><div class="recommendation-head"><div><p class="eyebrow">THE DAILY EDIT</p><h2>What feels right today?</h2></div><button class="primary-button" id="recommend">Build my look <span>→</span></button></div><div id="recommendation-result" class="result-empty"><div class="result-mark">✦</div><p>Set your context above, then let the edit take shape.</p></div></section>
+    </main>
+    <footer><span>CLOSETLY / A QUIETER WAY TO GET DRESSED</span><span>LOCAL WARDROBE · LIVE WEATHER</span></footer>
+  </div>
+  <div class="modal-backdrop" id="modal"><div class="modal"><button class="close" id="close-modal">×</button><p class="eyebrow">ADD TO YOUR CLOSET</p><h2>Bring a piece into the edit.</h2><div class="add-tabs"><button class="tab active" data-tab="manual">Manual details</button><button class="tab" data-tab="photo">Use a photo</button></div><form id="item-form" enctype="multipart/form-data"><div class="photo-drop" id="photo-drop"><input type="file" id="photo" name="photo" accept="image/*"><div class="upload-glyph">⌁</div><strong>Drop a photo here</strong><span>or choose from your computer</span></div><div class="form-grid"><label>Name<input name="name" required placeholder="Cobalt linen shirt"></label><label>Category<select name="category"><option>Top</option><option>Bottom</option><option>Layer</option><option>Shoes</option><option>Accessory</option></select></label><label>Color<input name="color" placeholder="Cobalt blue"></label><label>Warmth<select name="warmth"><option value="1">Light</option><option value="2" selected>Medium</option><option value="3">Warm</option><option value="4">Very warm</option><option value="5">Heavy</option></select></label></div><label class="check"><input type="checkbox" name="waterproof"> Water-friendly fabric</label><p class="form-message" id="form-message"></p><button class="primary-button full" type="submit">Add to wardrobe <span>→</span></button></form></div></div>
+  <script>window.INITIAL_ITEMS = {{ items|tojson }};</script><script src="/static/app.js"></script>
+</body></html>
